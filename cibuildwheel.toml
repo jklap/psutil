@@ -8,3 +8,4 @@ test-command = [
 
 [tool.cibuildwheel.macos]
 archs = ["x86_64", "arm64"]
+test-skip = ["*-macosx_arm64"]
