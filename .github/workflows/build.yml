@@ -18,28 +18,15 @@
 # * https://github.com/vmactions/freebsd-vm
 
 on:
-  pull_request:
   push:
-    branches: master
-  release:
-    types: [released, prereleased]
+    tags:
+      - release-**
   workflow_dispatch:  # allows running workflow manually from the Actions tab
 permissions:
   contents: write
 name: build
 jobs:
-  tag:
-    # additionally create a release for every commit to master
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ncipollo/release-action@v1
-        with:
-          commit: ${{ github.sha }}
-          tag: ${{ github.run_id }}
-          generateReleaseNotes: true
-
-  # Linux + macOS + Windows CPython 3.6+
+  # Linux + macOS CPython 3.7+
   py3:
     name: py3, ${{ matrix.os }}, ${{ matrix.archs }}
     runs-on: ${{ matrix.os }}
@@ -81,11 +68,8 @@ jobs:
         path: wheelhouse
         
     - uses: softprops/action-gh-release@v1
-      # additionally create a release for every commit to master
-      if: github.event_name == 'release' || github.event_name == 'push'
       with:
         files: wheelhouse/*.whl
-        tag_name: ${{ github.event_name == 'release' && github.ref || github.run_id }}
 
     - name: Generate .tar.gz
       if: matrix.os == 'ubuntu-latest'
@@ -96,12 +80,12 @@ jobs:
         mv dist/psutil*.tar.gz wheelhouse/
 
   gh-pages:
-    # only run when action-gh-release ran
-    if: github.event_name == 'release' || github.event_name == 'push'
     needs: [py3]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
       - name: Write index.html
         run: |
           mkdir ./public
@@ -119,6 +103,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
     - name: 'Run linters'
       run: |
         # py3
