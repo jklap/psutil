@@ -1,75 +1,9 @@
-|  |downloads| |stars| |forks| |contributors| |coverage|
-|  |version| |py-versions| |packages| |license| |twitter| |tidelift|
-|  |github-actions-wheels|  |github-actions-bsd| |appveyor| |doc|
-
-.. |downloads| image:: https://img.shields.io/pypi/dm/psutil.svg
-    :target: https://pepy.tech/project/psutil
-    :alt: Downloads
-
-.. |stars| image:: https://img.shields.io/github/stars/giampaolo/psutil.svg
-    :target: https://github.com/giampaolo/psutil/stargazers
-    :alt: Github stars
-
-.. |forks| image:: https://img.shields.io/github/forks/giampaolo/psutil.svg
-    :target: https://github.com/giampaolo/psutil/network/members
-    :alt: Github forks
-
-.. |contributors| image:: https://img.shields.io/github/contributors/giampaolo/psutil.svg
-    :target: https://github.com/giampaolo/psutil/graphs/contributors
-    :alt: Contributors
-
-.. |github-actions-wheels| image:: https://img.shields.io/github/actions/workflow/status/giampaolo/psutil/.github/workflows/build.yml?label=Linux%2C%20macOS%2C%20Windows
-    :target: https://github.com/giampaolo/psutil/actions?query=workflow%3Abuild
-    :alt: Linux, macOS, Windows
-
-.. |github-actions-bsd| image:: https://img.shields.io/github/actions/workflow/status/giampaolo/psutil/.github/workflows/bsd.yml?label=FreeBSD,%20NetBSD,%20OpenBSD
-    :target: https://github.com/giampaolo/psutil/actions?query=workflow%3Absd-tests
-    :alt: FreeBSD, NetBSD, OpenBSD
-
-.. |appveyor| image:: https://img.shields.io/appveyor/build/giampaolo/psutil/master.svg?maxAge=3600&label=Windows%20(py2)
-    :target: https://ci.appveyor.com/project/giampaolo/psutil
-    :alt: Windows (Appveyor)
-
-.. |coverage| image:: https://coveralls.io/repos/github/giampaolo/psutil/badge.svg?branch=master
-    :target: https://coveralls.io/github/giampaolo/psutil?branch=master
-    :alt: Test coverage (coverall.io)
-
-.. |doc| image:: https://readthedocs.org/projects/psutil/badge/?version=latest
-    :target: https://psutil.readthedocs.io/en/latest/
-    :alt: Documentation Status
-
-.. |version| image:: https://img.shields.io/pypi/v/psutil.svg?label=pypi
-    :target: https://pypi.org/project/psutil
-    :alt: Latest version
-
-.. |py-versions| image:: https://img.shields.io/pypi/pyversions/psutil.svg
-    :alt: Supported Python versions
-
-.. |packages| image:: https://repology.org/badge/tiny-repos/python:psutil.svg
-    :target: https://repology.org/metapackage/python:psutil/versions
-    :alt: Binary packages
-
-.. |license| image:: https://img.shields.io/pypi/l/psutil.svg
-    :target: https://github.com/giampaolo/psutil/blob/master/LICENSE
-    :alt: License
-
-.. |twitter| image:: https://img.shields.io/twitter/follow/grodola.svg?label=follow&style=flat&logo=twitter&logoColor=4FADFF
-    :target: https://twitter.com/grodola
-    :alt: Twitter Follow
-
-.. |tidelift| image:: https://tidelift.com/badges/github/giampaolo/psutil?style=flat
-    :target: https://tidelift.com/subscription/pkg/pypi-psutil?utm_source=pypi-psutil&utm_medium=referral&utm_campaign=readme
-    :alt: Tidelift
-
 Fork
 ====
 
 This fork builds `more wheels <https://github.com/giampaolo/psutil/pull/2103>`__:
 
-- It receives `automatic <https://github.com/wei/pull>`__ merge commits from upstream.
-- It creates a release for each commit on `master`, and uploads wheels as release assets.
 - After building wheels, there is a deploy to Github Pages containing all wheel links.
-- With each commit that changes `__version__`, new wheels will show up.
 - Links on Github Pages will point to the latest commit that still contains a specific `__version__`.
 
 Fork Usage
@@ -77,10 +11,10 @@ Fork Usage
 
 .. code-block:: bash
 
-    export PIP_FIND_LINKS=https://ddelange.github.io/psutil/
+    export PIP_FIND_LINKS=https://jklap.github.io/psutil/
     pip install ...
     # OR
-    pip install ... --find-links=https://ddelange.github.io/psutil/
+    pip install ... --find-links=https://jklap.github.io/psutil/
 
 -----
 
