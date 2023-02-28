@@ -132,11 +132,6 @@ QEMU_USER = LINUX and GITHUB_ACTIONS and platform.machine() == 'aarch64'
 COVERAGE = 'COVERAGE_RUN' in os.environ
 # are we a 64 bit process?
 IS_64BIT = sys.maxsize > 2 ** 32
-if MACOS:
-    _macos_version = platform.mac_ver()[0]
-    MACOS_11PLUS = tuple(map(int, _macos_version.split(".")[:2])) > (10, 15)
-else:
-    MACOS_11PLUS = False
 
 
 @memoize
