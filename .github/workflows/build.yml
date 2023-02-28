@@ -32,6 +32,7 @@ jobs:
           commit: ${{ github.sha }}
           tag: ${{ github.run_id }}
           generateReleaseNotes: true
+
   # Linux + macOS + Windows CPython 3.6+
   py3:
     name: py3, ${{ matrix.os }}, ${{ matrix.archs }}
@@ -47,14 +48,10 @@ jobs:
           archs: "aarch64"
         - os: macos-12
           archs: "x86_64 arm64"
-        - os: windows-2019
-          archs: "AMD64"
-        - os: windows-2019
-          archs: "x86"
 
     steps:
     - name: Cancel previous runs
-      uses: styfle/cancel-workflow-action@0.9.1
+      uses: styfle/cancel-workflow-action@0.11.0
       with:
         access_token: ${{ github.token }}
 
@@ -64,11 +61,11 @@ jobs:
         python-version: 3.11
 
     - name: Set up QEMU
-      uses: docker/setup-qemu-action@v1
+      uses: docker/setup-qemu-action@v2
       if: matrix.archs == 'aarch64'
 
     - name: Create wheels + run tests
-      uses: pypa/cibuildwheel@v2.11.2
+      uses: pypa/cibuildwheel@v2.12.0
       with:
         config-file: "./cibuildwheel.toml"
       env:
@@ -113,7 +110,7 @@ jobs:
 
     steps:
     - name: Cancel previous runs
-      uses: styfle/cancel-workflow-action@0.9.1
+      uses: styfle/cancel-workflow-action@0.11.0
       with:
         access_token: ${{ github.token }}
 
@@ -123,7 +120,7 @@ jobs:
         python-version: 3.9
 
     - name: Create wheels + run tests
-      uses: pypa/cibuildwheel@v1.12.0
+      uses: pypa/cibuildwheel@v2
 
     - name: Upload wheels
       uses: actions/upload-artifact@v3
